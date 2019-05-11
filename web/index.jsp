@@ -18,6 +18,7 @@
     <body>
         <h1>JavaDb!</h1>
         <h2>Clientes</h2>
+        <h2><a href="listManufacturer.jsp">Visualizar Fabricantes</a></h2>
         <%try{%>
            <%ArrayList<Customer> list = Customer.getList();%>
            <table border="1">
