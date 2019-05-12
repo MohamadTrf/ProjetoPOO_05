@@ -18,6 +18,7 @@
     <body>
         <h1>JavaDb!</h1>
         <h2>Clientes</h2>
+        <h2><a href="listManufacturer.jsp">Visualizar Fabricantes</a></h2>
         <%try{%>
            <%ArrayList<Customer> list = Customer.getList();%>
            <table border="1">
@@ -25,6 +26,8 @@
                    <th>ID</th>
                    <th>Nome</th>
                    <th>E-mail</th>
+                   <th>Cidade</th>
+                   <th>Estado</th>
                    <th>Detahles</th>
                </tr>
                <%for(Customer c: list) {%>
@@ -32,6 +35,8 @@
                      <td><%= c.getId() %></td>
                      <td><%= c.getName()%></td>
                      <td><%= c.getEmail()%></td>
+                     <td><%= c.getCity()%></td>
+                     <td><%= c.getState()%></td>
                      <td><a href="details.jsp?id=<%= c.getId()%>">Ver detalhes</a></td>
                  </tr>
                <%}%>

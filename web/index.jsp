@@ -26,6 +26,8 @@
                    <th>ID</th>
                    <th>Nome</th>
                    <th>E-mail</th>
+                   <th>Cidade</th>
+                   <th>Estado</th>
                    <th>Detahles</th>
                </tr>
                <%for(Customer c: list) {%>
@@ -33,6 +35,8 @@
                      <td><%= c.getId() %></td>
                      <td><%= c.getName()%></td>
                      <td><%= c.getEmail()%></td>
+                     <td><%= c.getCity()%></td>
+                     <td><%= c.getState()%></td>
                      <td><a href="details.jsp?id=<%= c.getId()%>">Ver detalhes</a></td>
                  </tr>
                <%}%>
