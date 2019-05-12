@@ -33,7 +33,7 @@
                      <td><%= m.getCity()%></td>
                      <td><%= m.getState()%></td>
                      <td><%= m.getEmail()%></td> 
-                     <td><a href="details.jsp?id=<%= m.getManufacturer_id()%>"> Lista de Produtos do Fabricante</a></td>
+                     <td><a href="listProducts.jsp?id=<%= m.getManufacturer_id()%>"> Lista de Produtos do Fabricante</a></td>
                  </tr>
                <%}%>
            </table>
