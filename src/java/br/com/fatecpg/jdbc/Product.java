@@ -18,7 +18,8 @@ import java.util.ArrayList;
 public class Product {
         private int productId;
         private int preco;
-        private String Descricao;
+        private String descricao;
+        private int manufacturer_id;
 
     public static ArrayList<Product> getProduct() throws Exception{
         Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -31,7 +32,7 @@ public class Product {
         while(rs.next()){
             Product p = new Product(
                     rs.getInt("PRODUCT_ID"),rs.getInt("PURCHASE_COST"), 
-                    rs.getString("DESCRIPTION"));   
+                    rs.getString("DESCRIPTION"), rs.getInt("MANUFACTURER_ID"));   
         
             list.add(p);
         }
@@ -40,10 +41,12 @@ public class Product {
         con.close();
         return list;
     }
-        public Product(int productId, int preco, String Descricao) {
+        public Product(int productId, int preco, String descricao, int manufacturer_id) {
             this.productId = productId;
             this.preco = preco;
-            this.Descricao = Descricao;
+            this.descricao = descricao;
+            this.manufacturer_id = manufacturer_id;
+            
         }
         
         public int getProductId() {
@@ -63,12 +66,23 @@ public class Product {
         }
 
         public String getDescricao() {
-            return Descricao;
+            return descricao;
         }
 
         public void setDescricao(String Descricao) {
-            this.Descricao = Descricao;
+            this.descricao = descricao;
         }
+
+        public int getManufacturer_id() {
+        return manufacturer_id;
+    }
+
+        public void setManufacturer_id(int manufacturer_id) {
+        this.manufacturer_id = manufacturer_id;
+    }
+        
+        
         
     }
+
 
