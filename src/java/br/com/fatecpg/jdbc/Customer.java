@@ -16,6 +16,8 @@ public class Customer {
     private int id;
     private String name;
     private String email;
+    private String city;
+    private String state;
     
     
     public static Customer getCustomer(int id) throws Exception{
@@ -29,7 +31,11 @@ public class Customer {
         Customer c = null;
         if(rs.next()){
             c = new Customer(
-                    rs.getInt("CUSTOMER_ID"),rs.getString("NAME"), rs.getString("EMAIL"));   
+                    rs.getInt("CUSTOMER_ID"),
+                    rs.getString("NAME"), 
+                    rs.getString("EMAIL"),  
+                    rs.getString("CITY"),  
+                    rs.getString("STATE"));   
         
           
         }
@@ -48,7 +54,11 @@ public class Customer {
         ArrayList<Customer> list = new ArrayList<>();
         while(rs.next()){
             Customer c = new Customer(
-                    rs.getInt("CUSTOMER_ID"),rs.getString("NAME"), rs.getString("EMAIL"));   
+                    rs.getInt("CUSTOMER_ID"),
+                    rs.getString("NAME"), 
+                    rs.getString("EMAIL"),   
+                    rs.getString("CITY"),   
+                    rs.getString("STATE"));   
         
             list.add(c);
         }
@@ -58,10 +68,12 @@ public class Customer {
         return list;
     }
     
-    public Customer(int id, String name, String email) {
+    public Customer(int id, String name, String email, String city, String state) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.city = city;
+        this.state = state;
     }
 
     public String getEmail() {
@@ -86,6 +98,22 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
     
     
