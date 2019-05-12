@@ -18,7 +18,29 @@ public class Manufacturer {
     private String city;
     private String state;
     private String email;
-
+    
+    
+    public static Manufacturer getManufacturerById(int id) throws Exception{
+        Class.forName("org.apache.derby.jdbc.ClientDriver");
+        String url = "jdbc:derby://localhost:1527/sample";
+        Connection con = DriverManager.getConnection(url,"app","app");
+        String SQL = "SELECT * FROM MANUFACTURER WHERE MANUFACTURER_ID = ? ";
+        PreparedStatement st = con.prepareStatement(SQL);
+        st.setInt(1,id);
+        ResultSet rs = st.executeQuery();
+        Manufacturer m = null;
+        if(rs.next()){
+                m = new Manufacturer(
+                    rs.getInt("MANUFACTURER_ID"),rs.getString("NAME"), 
+                    rs.getString("CITY"),rs.getString("STATE"),rs.getString("EMAIL"));
+        }
+        rs.close();
+        st.close();
+        con.close();
+        return m;
+    }
+    
+    
     public static ArrayList<Manufacturer> getManufacturer() throws Exception{
         Class.forName("org.apache.derby.jdbc.ClientDriver");
         String url = "jdbc:derby://localhost:1527/sample";
