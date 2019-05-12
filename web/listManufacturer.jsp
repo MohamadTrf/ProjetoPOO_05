@@ -16,6 +16,29 @@
     <body>
         <h1>Lista de Fabricantes cadastrado!</h1>
         <h3><a href="index.jsp">Voltar</a></h3>
-
+        <%try{%>
+            <%ArrayList<Manufacturer> list = Manufacturer.getManufacturer();%>
+            <table border="1">
+               <tr>
+                   <th>ID</th>
+                   <th>Nome</th>
+                   <th>Cidade</th>
+                   <th>Estado</th>
+                   <th>Email</th>
+               </tr>
+               <%for(Manufacturer m: list) {%>
+                 <tr>
+                     <td><%= m.getManufacturer_id() %></td>
+                     <td><%= m.getName() %></td>
+                     <td><%= m.getCity()%></td>
+                     <td><%= m.getState()%></td>
+                     <td><%= m.getEmail()%></td> 
+                     <td><a href="details.jsp?id=<%= m.getManufacturer_id()%>"> Lista de Produtos do Fabricante</a></td>
+                 </tr>
+               <%}%>
+           </table>
+        <%}catch(Exception Ex){%>
+            <h3 style ="color: red"><%=Ex.getMessage()%></h3>
+        <%}%>
     </body>
 </html>
